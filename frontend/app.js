@@ -85,7 +85,7 @@ class MessagingApp {
         this.showLoading();
         
         try {
-            const response = await fetch('http://localhost:3001/register', {
+            const response = await fetch('/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
@@ -125,7 +125,7 @@ class MessagingApp {
         this.showLoading();
         
         try {
-            const response = await fetch('http://localhost:3001/login', {
+            const response = await fetch('/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
@@ -150,7 +150,7 @@ class MessagingApp {
     }
 
     connectSocket() {
-        this.socket = io('http://localhost:3001');
+        this.socket = io(window.location.origin);
         
         this.socket.on('connect', () => {
             this.socket.emit('login', { name: this.currentUser.name });
@@ -217,7 +217,7 @@ class MessagingApp {
         if (!query) return;
 
         try {
-            const response = await fetch(`http://localhost:3001/user/${query}`);
+            const response = await fetch(`/user/${query}`);
             
             if (response.ok) {
                 const userData = await response.json();
@@ -412,7 +412,7 @@ class MessagingApp {
         if (!groupName) return;
 
         try {
-            const response = await fetch('http://localhost:3001/create-group', {
+            const response = await fetch('/create-group', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -472,7 +472,7 @@ class MessagingApp {
 
     async addUserToGroup(groupId) {
         try {
-            const response = await fetch('http://localhost:3001/join-group', {
+            const response = await fetch('/join-group', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -662,7 +662,7 @@ class MessagingApp {
         }
 
         try {
-            const response = await fetch('http://localhost:3001/send-message-request', {
+            const response = await fetch('/send-message-request', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -686,7 +686,7 @@ class MessagingApp {
 
     async respondToRequest(requestId, accept) {
         try {
-            const response = await fetch('http://localhost:3001/respond-to-request', {
+            const response = await fetch('/respond-to-request', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -826,7 +826,7 @@ class MessagingApp {
 
     async openChatFromNotification(senderName, popupId) {
         try {
-            const response = await fetch(`http://localhost:3001/user/${senderName}`);
+            const response = await fetch(`/user/${senderName}`);
             if (response.ok) {
                 const userData = await response.json();
                 this.startChat(userData.name, userData.displayName, 'private');
@@ -841,7 +841,7 @@ class MessagingApp {
         if (!this.currentUser || !this.currentUser.userId) return;
 
         try {
-            const response = await fetch(`http://localhost:3001/chats/${this.currentUser.userId}`);
+            const response = await fetch(`/chats/${this.currentUser.userId}`);
             if (response.ok) {
                 const savedChats = await response.json();
                 
@@ -858,7 +858,7 @@ class MessagingApp {
         if (!this.currentUser || !this.currentUser.userId) return;
 
         try {
-            await fetch('http://localhost:3001/save-chat', {
+            await fetch('/save-chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -879,7 +879,7 @@ class MessagingApp {
 
         try {
             const chatWith = type === 'group' ? null : chatKey;
-            const response = await fetch('http://localhost:3001/remove-chat', {
+            const response = await fetch('/remove-chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -924,7 +924,7 @@ class MessagingApp {
         if (!username || !this.currentChat || this.currentChat.type !== 'group') return;
 
         try {
-            const response = await fetch('http://localhost:3001/add-user-to-group', {
+            const response = await fetch('/add-user-to-group', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -951,7 +951,7 @@ class MessagingApp {
         if (!this.currentChat || this.currentChat.type !== 'group') return;
 
         try {
-            const response = await fetch(`http://localhost:3001/group-members/${this.currentChat.groupId}`);
+            const response = await fetch(`/group-members/${this.currentChat.groupId}`);
             if (response.ok) {
                 const members = await response.json();
                 this.displayGroupMembers(members);

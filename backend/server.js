@@ -20,6 +20,8 @@ const io = socketIo(server, {
 app.use(cors());
 app.use(express.json());
 
+app.use(express.static(path.join(__dirname, '../frontend')));
+
 const users = new Map();
 const messages = new Map();
 const groups = new Map();
@@ -534,7 +536,11 @@ io.on('connection', (socket) => {
   });
 });
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
+});
+
 const PORT = process.env.PORT || 3001;
-server.listen(PORT, () => {
+server.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
 });

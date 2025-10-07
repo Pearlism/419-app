@@ -1,0 +1,60 @@
+[
+  [
+    "55e0766f-d390-4817-a6f4-fa372d909be8",
+    [
+      {
+        "chatWith": "landen",
+        "displayName": "landen",
+        "type": "group",
+        "groupId": "6be1555c-0276-40fb-8454-b31963fa31c3",
+        "lastMessage": null,
+        "timestamp": "2025-09-30T23:09:49.174Z"
+      },
+      {
+        "chatWith": "my group",
+        "displayName": "my group",
+        "type": "group",
+        "groupId": "8be076c6-e975-4ad5-b346-89461d3d6c0d",
+        "lastMessage": null,
+        "timestamp": "2025-09-30T23:19:22.870Z"
+      }
+    ]
+  ],
+  [
+    "9fe2029d-b1a7-4c78-886a-87ded79d2d0a",
+    [
+      {
+        "chatWith": "6be1555c-0276-40fb-8454-b31963fa31c3",
+        "displayName": "landen",
+        "type": "group",
+        "groupId": "6be1555c-0276-40fb-8454-b31963fa31c3",
+        "lastMessage": null,
+        "timestamp": "2025-09-30T23:02:53.211Z"
+      },
+      {
+        "chatWith": "8be076c6-e975-4ad5-b346-89461d3d6c0d",
+        "displayName": "my group",
+        "type": "group",
+        "groupId": "8be076c6-e975-4ad5-b346-89461d3d6c0d",
+        "lastMessage": null,
+        "timestamp": "2025-09-30T23:19:15.184Z"
+      },
+      {
+        "chatWith": "pearlism",
+        "displayName": "pearlism",
+        "type": "private",
+        "groupId": null,
+        "lastMessage": null,
+        "timestamp": "2025-10-07T20:37:32.912Z"
+      },
+      {
+        "chatWith": "e4aa22d3-07e0-482e-8ad2-842cc82138fc",
+        "displayName": "f",
+        "type": "group",
+        "groupId": "e4aa22d3-07e0-482e-8ad2-842cc82138fc",
+        "lastMessage": null,
+        "timestamp": "2025-10-07T20:37:53.824Z"
+      }
+    ]
+  ]
+]

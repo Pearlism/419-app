@@ -1,0 +1,20 @@
+{
+  "name": "419-chat-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for 419 Chat - A modern real-time messaging app",
+  "scripts": {
+    "start": "npx serve -s . -l 3000",
+    "dev": "npx serve -s . -l 3000"
+  },
+  "keywords": [
+    "chat",
+    "messaging",
+    "real-time"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}
+

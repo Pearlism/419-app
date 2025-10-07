@@ -1386,27 +1386,35 @@ body::before {
         -webkit-tap-highlight-color: transparent;
     }
     
-    html, body {
+    html {
         width: 100%;
         height: 100%;
         overflow: hidden;
-        position: fixed;
     }
     
     body {
         font-size: 14px;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
     }
 
     .auth-container {
         padding: 16px;
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
-        position: fixed;
-        top: 0;
-        left: 0;
     }
 
     .auth-card {
@@ -1414,6 +1422,8 @@ body::before {
         max-width: 100%;
         width: 100%;
         border-radius: 20px;
+        max-height: 90vh;
+        overflow-y: auto;
     }
 
     .auth-card h1 {
@@ -1449,18 +1459,13 @@ body::before {
     }
 
     #main-app.screen.active {
-        display: block !important;
-        width: 100vw;
-        height: 100vh;
-        position: fixed;
-        top: 0;
-        left: 0;
-        overflow: hidden;
+        display: flex !important;
+        flex-direction: column;
     }
 
     .app-container {
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: column;
         position: relative;
@@ -1470,7 +1475,7 @@ body::before {
     .sidebar {
         width: 85%;
         max-width: 350px;
-        height: 100vh;
+        height: 100%;
         position: fixed;
         top: 0;
         left: 0;
@@ -1492,8 +1497,8 @@ body::before {
         position: fixed;
         top: 0;
         left: 0;
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
         background: rgba(0, 0, 0, 0.6);
         z-index: 9998;
         opacity: 0;
@@ -1507,15 +1512,14 @@ body::before {
     }
 
     .sidebar-header {
-        padding: 16px;
+        padding: 12px 16px;
         background: rgba(26, 31, 40, 1);
         border-bottom: 1px solid var(--border-color);
         display: flex !important;
         align-items: center;
         justify-content: space-between;
-        gap: 12px;
+        gap: 10px;
         flex-shrink: 0;
-        min-height: 70px;
     }
 
     .mobile-menu-toggle {
@@ -1543,11 +1547,11 @@ body::before {
     }
 
     .user-avatar {
-        width: 42px;
-        height: 42px;
-        font-size: 16px;
+        width: 40px;
+        height: 40px;
+        font-size: 15px;
         flex-shrink: 0;
-        margin-right: 12px;
+        margin-right: 10px;
     }
 
     .user-details {
@@ -1556,14 +1560,14 @@ body::before {
     }
 
     .user-details h3 {
-        font-size: 15px;
+        font-size: 14px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
     }
 
     .user-details p {
-        font-size: 12px;
+        font-size: 11px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -1576,7 +1580,7 @@ body::before {
     }
 
     .search-section {
-        padding: 16px;
+        padding: 12px 16px;
         background: rgba(26, 31, 40, 1);
         border-bottom: 1px solid var(--border-color);
         flex-shrink: 0;
@@ -1588,7 +1592,7 @@ body::before {
     }
 
     .section-header {
-        padding: 16px;
+        padding: 12px 16px;
         background: rgba(26, 31, 40, 1);
         border-bottom: 1px solid var(--border-color);
         flex-shrink: 0;
@@ -1606,15 +1610,15 @@ body::before {
     }
 
     .chat-item {
-        padding: 14px;
+        padding: 12px;
         margin-bottom: 6px;
         border-radius: 12px;
     }
 
     .chat-avatar {
-        width: 42px;
-        height: 42px;
-        font-size: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
     }
 
     .chat-info h4 {
@@ -1626,8 +1630,8 @@ body::before {
     }
 
     .chat-area {
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: column;
         position: relative;
@@ -1635,17 +1639,14 @@ body::before {
     }
 
     .chat-header {
-        padding: 14px 16px;
+        padding: 12px 16px;
         background: rgba(26, 31, 40, 1);
         border-bottom: 1px solid var(--border-color);
         display: flex !important;
         align-items: center;
         justify-content: space-between;
-        gap: 12px;
+        gap: 10px;
         flex-shrink: 0;
-        min-height: 64px;
-        position: relative;
-        z-index: 100;
     }
 
     .mobile-chat-toggle {
@@ -1673,11 +1674,11 @@ body::before {
     }
 
     .chat-user-avatar {
-        width: 40px;
-        height: 40px;
+        width: 38px;
+        height: 38px;
         font-size: 14px;
         flex-shrink: 0;
-        margin-right: 12px;
+        margin-right: 10px;
     }
 
     .chat-user-details {
@@ -1686,14 +1687,14 @@ body::before {
     }
 
     .chat-user-details h3 {
-        font-size: 15px;
+        font-size: 14px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
     }
 
     .chat-user-details p {
-        font-size: 12px;
+        font-size: 11px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -1701,7 +1702,7 @@ body::before {
 
     .chat-actions {
         display: flex;
-        gap: 6px;
+        gap: 4px;
         flex-shrink: 0;
     }
 
@@ -1711,6 +1712,7 @@ body::before {
         align-items: center;
         justify-content: center;
         padding: 20px;
+        overflow-y: auto;
     }
 
     .no-chat-content i {
@@ -1735,6 +1737,7 @@ body::before {
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
         padding: 16px;
+        min-height: 0;
     }
 
     .message {
@@ -1749,21 +1752,21 @@ body::before {
     }
 
     .message-input-container {
-        padding: 16px;
+        padding: 12px 16px;
         background: rgba(26, 31, 40, 1);
         border-top: 1px solid var(--border-color);
         flex-shrink: 0;
     }
 
     .message-input {
-        padding: 6px;
+        padding: 4px;
         border-radius: 24px;
         display: flex;
         align-items: center;
     }
 
     .message-input input {
-        padding: 12px 16px;
+        padding: 10px 14px;
         font-size: 16px;
         flex: 1;
     }
@@ -1776,10 +1779,10 @@ body::before {
     }
 
     .btn-icon {
-        width: 40px;
-        height: 40px;
+        width: 38px;
+        height: 38px;
         padding: 8px;
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .modal {

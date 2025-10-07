@@ -56,7 +56,7 @@ body::before {
         radial-gradient(circle at 40% 20%, rgba(236, 72, 153, 0.05) 0%, transparent 50%);
     animation: floating 30s ease-in-out infinite;
     pointer-events: none;
-    z-index: 0;
+    z-index: -1;
 }
 
 @keyframes gradientFlow {
@@ -275,7 +275,8 @@ body::before {
     overflow: hidden;
     animation: fadeIn 0.8s cubic-bezier(0.22, 1, 0.36, 1);
     position: relative;
-    z-index: 1;
+    z-index: 10;
+    background: transparent;
 }
 
 @keyframes fadeIn {
@@ -293,7 +294,7 @@ body::before {
     width: 380px;
     min-width: 320px;
     max-width: 380px;
-    background: rgba(26, 31, 40, 0.85);
+    background: rgba(26, 31, 40, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-right: 1px solid var(--border-color);
@@ -302,6 +303,8 @@ body::before {
     flex-shrink: 0;
     animation: slideInLeft 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     box-shadow: var(--shadow-md);
+    position: relative;
+    z-index: 100;
 }
 
 @keyframes slideInLeft {
@@ -658,6 +661,9 @@ body::before {
     min-width: 0;
     overflow: hidden;
     animation: slideInRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+    position: relative;
+    z-index: 50;
+    background: var(--bg-darker);
 }
 
 @keyframes slideInRight {
@@ -678,6 +684,9 @@ body::before {
     justify-content: center;
     text-align: center;
     color: var(--text-secondary);
+    background: var(--bg-darker);
+    position: relative;
+    z-index: 1;
 }
 
 .no-chat-content i {
@@ -755,6 +764,7 @@ body::before {
     min-height: 0;
     scroll-behavior: smooth;
     position: relative;
+    z-index: 1;
 }
 
 .messages-container::before {
@@ -1373,6 +1383,7 @@ body::before {
     body {
         font-size: 14px;
         overflow-x: hidden;
+        position: relative;
     }
     
     body.modal-open {
@@ -1392,6 +1403,11 @@ body::before {
         max-width: 100%;
         width: 100%;
         border-radius: 20px;
+    }
+    
+    .app-container {
+        position: relative;
+        z-index: 10;
     }
 
     .auth-card h1 {
@@ -1443,10 +1459,15 @@ body::before {
         transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         box-shadow: 4px 0 24px rgba(0, 0, 0, 0.5);
         overflow-y: auto;
+        background: rgba(26, 31, 40, 0.98);
     }
 
     .sidebar.mobile-open {
         transform: translateX(0);
+    }
+    
+    .sidebar-header {
+        background: rgba(26, 31, 40, 1);
     }
     
     .mobile-backdrop {
@@ -1491,9 +1512,10 @@ body::before {
         padding: 16px;
         position: sticky;
         top: 0;
-        background: rgba(26, 31, 40, 0.98);
+        background: rgba(26, 31, 40, 1);
         backdrop-filter: blur(20px);
-        z-index: 100;
+        z-index: 150;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
 
     .search-container {
@@ -1515,9 +1537,10 @@ body::before {
         padding: 16px 20px;
         position: sticky;
         top: 0;
-        background: rgba(26, 31, 40, 0.98);
+        background: rgba(26, 31, 40, 1);
         backdrop-filter: blur(20px);
-        z-index: 99;
+        z-index: 140;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
 
     .section-header h3 {
@@ -1559,16 +1582,18 @@ body::before {
         height: 100vh;
         height: 100dvh;
         position: relative;
-        z-index: 1;
+        z-index: 10;
+        background: var(--bg-darker);
     }
 
     .chat-header {
         padding: 18px 20px;
         position: sticky;
         top: 0;
-        z-index: 10;
+        z-index: 100;
         background: rgba(26, 31, 40, 0.98);
         backdrop-filter: blur(20px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
 
     .chat-user-avatar {
@@ -1626,7 +1651,8 @@ body::before {
         bottom: 0;
         background: rgba(26, 31, 40, 0.98);
         backdrop-filter: blur(20px);
-        z-index: 10;
+        z-index: 100;
+        box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
     }
 
     .message-input {

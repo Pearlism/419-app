@@ -1366,6 +1366,8 @@ body::before {
     border-radius: 10px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     -webkit-tap-highlight-color: transparent;
+    position: relative;
+    z-index: 200;
 }
 
 .mobile-menu-toggle:hover,
@@ -1405,9 +1407,20 @@ body::before {
         border-radius: 20px;
     }
     
+    #main-app {
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        overflow: hidden;
+    }
+    
     .app-container {
         position: relative;
         z-index: 10;
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        flex-direction: column;
     }
 
     .auth-card h1 {
@@ -1460,6 +1473,7 @@ body::before {
         box-shadow: 4px 0 24px rgba(0, 0, 0, 0.5);
         overflow-y: auto;
         background: rgba(26, 31, 40, 0.98);
+        -webkit-overflow-scrolling: touch;
     }
 
     .sidebar.mobile-open {
@@ -1468,6 +1482,18 @@ body::before {
     
     .sidebar-header {
         background: rgba(26, 31, 40, 1);
+        position: sticky;
+        top: 0;
+        z-index: 200;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+    }
+    
+    .mobile-menu-toggle {
+        order: -1;
+        flex-shrink: 0;
     }
     
     .mobile-backdrop {
@@ -1498,14 +1524,27 @@ body::before {
         width: 44px;
         height: 44px;
         font-size: 16px;
+        flex-shrink: 0;
+    }
+    
+    .user-info {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
     }
 
     .user-details h3 {
         font-size: 15px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .user-details p {
         font-size: 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .search-section {
@@ -1584,30 +1623,67 @@ body::before {
         position: relative;
         z-index: 10;
         background: var(--bg-darker);
+        display: flex;
+        flex-direction: column;
     }
 
     .chat-header {
-        padding: 18px 20px;
+        padding: 14px 16px;
         position: sticky;
         top: 0;
         z-index: 100;
-        background: rgba(26, 31, 40, 0.98);
+        background: rgba(26, 31, 40, 1);
         backdrop-filter: blur(20px);
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        display: flex !important;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        gap: 10px;
+    }
+    
+    .mobile-chat-toggle {
+        order: -1;
+        display: flex !important;
+        flex-shrink: 0;
+    }
+    
+    .chat-user-info {
+        flex: 1;
+        min-width: 0;
+    }
+    
+    .chat-actions {
+        display: flex;
+        gap: 6px;
+        flex-shrink: 0;
     }
 
     .chat-user-avatar {
-        width: 40px;
-        height: 40px;
+        width: 38px;
+        height: 38px;
         font-size: 14px;
+        flex-shrink: 0;
+    }
+
+    .chat-user-details {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
     }
 
     .chat-user-details h3 {
-        font-size: 16px;
+        font-size: 15px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .chat-user-details p {
         font-size: 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .no-chat-content i {
@@ -1631,7 +1707,10 @@ body::before {
     }
 
     .messages-container {
+        flex: 1;
         padding: 16px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     .message {
@@ -1677,19 +1756,28 @@ body::before {
 
     .mobile-menu-toggle,
     .mobile-chat-toggle {
-        display: flex;
+        display: flex !important;
         align-items: center;
         justify-content: center;
         width: 44px;
         height: 44px;
         font-size: 20px;
+        background: var(--bg-card-hover);
+        border-radius: 10px;
+        color: var(--primary-color);
+        flex-shrink: 0;
+    }
+    
+    .mobile-menu-toggle:active,
+    .mobile-chat-toggle:active {
+        background: var(--bg-card);
     }
 
     .btn-icon {
-        padding: 10px;
+        padding: 8px;
         font-size: 18px;
-        min-width: 44px;
-        min-height: 44px;
+        min-width: 40px;
+        min-height: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1883,6 +1971,9 @@ body::before {
         padding: 16px;
         flex-wrap: nowrap;
         gap: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
     .user-avatar {
@@ -1895,14 +1986,21 @@ body::before {
     .user-info {
         flex: 1;
         min-width: 0;
+        overflow: hidden;
     }
 
     .user-details h3 {
         font-size: 14px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .user-details p {
         font-size: 11px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .search-section {

@@ -30,9 +30,8 @@ class MessagingApp {
         document.getElementById('show-login').addEventListener('click', (e) => this.showScreen('login-screen', e));
         document.getElementById('show-register').addEventListener('click', (e) => this.showScreen('register-screen', e));
         
-        // Mobile navigation
         document.getElementById('mobile-menu-toggle').addEventListener('click', () => this.toggleMobileSidebar());
-        document.getElementById('mobile-chat-toggle').addEventListener('click', () => this.toggleMobileChat());
+        document.getElementById('mobile-chat-toggle').addEventListener('click', () => this.closeMobileSidebar());
         document.getElementById('logout-btn').addEventListener('click', () => this.logout());
         document.getElementById('search-btn').addEventListener('click', () => this.searchUsers());
         document.getElementById('search-input').addEventListener('keypress', (e) => {
@@ -1025,26 +1024,42 @@ class MessagingApp {
     // Mobile navigation methods
     toggleMobileSidebar() {
         const sidebar = document.getElementById('sidebar');
-        const isOpen = sidebar.classList.contains('mobile-open');
+        sidebar.classList.toggle('mobile-open');
         
-        if (isOpen) {
-            sidebar.classList.remove('mobile-open');
+        if (sidebar.classList.contains('mobile-open')) {
+            document.body.style.overflow = 'hidden';
         } else {
-            sidebar.classList.add('mobile-open');
+            document.body.style.overflow = '';
         }
-    }
-
-    toggleMobileChat() {
-        const sidebar = document.getElementById('sidebar');
-        sidebar.classList.add('mobile-open');
     }
 
     closeMobileSidebar() {
         const sidebar = document.getElementById('sidebar');
         sidebar.classList.remove('mobile-open');
+        document.body.style.overflow = '';
+    }
+    
+    setupMobileBackdrop() {
+        const sidebar = document.getElementById('sidebar');
+        const backdrop = document.createElement('div');
+        backdrop.className = 'mobile-backdrop';
+        backdrop.addEventListener('click', () => this.closeMobileSidebar());
+        document.body.appendChild(backdrop);
+        
+        sidebar.addEventListener('transitionend', () => {
+            if (sidebar.classList.contains('mobile-open')) {
+                backdrop.classList.add('active');
+            } else {
+                backdrop.classList.remove('active');
+            }
+        });
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     window.app = new MessagingApp();
+    
+    if (window.innerWidth <= 768) {
+        window.app.setupMobileBackdrop();
+    }
 });
